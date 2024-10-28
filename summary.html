@@ -49,26 +49,20 @@
                 totalAmount += expense.amount;
 
             }); 
+            
             // Display the total amount
-            totalAmountElement.textContent = totalAmount.toFixed(2);
-                 
-        
-        
-       
-    
-    document.getElementById("prole").textContent=roleText[rolevalue]
-    document.getElementById("pname").textContent = gname || "User not found";
-});
-function clearExpenses() {
+            totalAmountElement.textContent = totalAmount.toFixed(2); 
+        document.getElementById("prole").textContent=roleText[rolevalue]
+        document.getElementById("pname").textContent = gname || "User not found";
+
+    });
+    function clearExpenses() {
             // Clear session storage
             sessionStorage.removeItem("expenses");
 
             // Clear displayed list and total
             document.getElementById("expenseList").innerHTML = '';
             document.getElementById("totalAmount").textContent = "0";
-        }
-        function closeTab() {
-            window.close();
         }
     </script>
 
