@@ -1,0 +1,109 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/navstyle.css">
+    <title>Add-Expense</title>
+</head>
+<body>
+    <script>
+function addExpense() {
+            // Get form data
+            const amount = document.getElementById("amount").value;
+            const date = document.getElementById("date").value;
+            const category = document.getElementById("category").value;
+
+            // Create a new expense object
+            const expense = { amount: parseFloat(amount), date, category };
+
+            // Retrieve existing expenses array from session storage, or initialize an empty array
+            const expenses = JSON.parse(sessionStorage.getItem("expenses")) || [];
+
+            // Add the new expense to the array
+            expenses.push(expense);
+
+            // Store the updated array back in session storage
+            sessionStorage.setItem("expenses", JSON.stringify(expenses));
+
+            // Redirect to summary page
+            window.location.href = "summary.html";
+        }
+    </script>
+    <div class="top">
+        <img src="logo.png" alt="logo"><h3 style="margin-left:-400px ;">Expense tracker</h3>
+        <nav class="nav_list">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user.html">User</a></li>
+                <li><a href="add-expense.html">Add-Expense</a></li>
+                <li><a href="summary.html">Summary</a></li>
+                <li><a href="">Exit</a></li>
+            </ul>
+        </nav>
+    </div>
+    <center>
+    <div class="user_table" style="background-color: #CFEE9E;">
+        <form action="summary.html">
+            <table >
+                <tr>
+                    <td >Amount:</td>
+                    <td><input type="text" id="amount" required></td>
+                </tr>
+                <tr>
+                    <td>Date:</td>
+                    <td><input type="date" id="date" min="2024-01-01" max="2024-12-25"></td>
+                </tr>
+                <tr>
+                    <td>Category:</td>
+                    <td>
+                        <select  id="category" required>
+                            <option value="Food">Food</option>
+                            <option value="Stationary">Stationary</option>
+                            <option value="Entertainment">Entertainment</option>
+                            <option value="Travel">Travel</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button id="expense_add">+ADD</button>
+            <button type="submit" id="expense_submit" onclick="addExpense()">submit</button>
+        </form>
+    </div>
+</center>
+    <style>
+        .user_table{
+            margin-top: 150px;
+            border: 5px solid ;
+            border-radius: 10px;
+            max-width: fit-content;
+            padding: 20px;
+            scale: 1.3;
+            background-color: #587B7F;
+            
+        }
+        button{
+            margin-top: 5px;
+            color: white;
+            list-style-type:none;
+            padding: 5px;
+            text-align: center;
+            background-color: #093824;
+            border-radius: 5px;
+            
+        
+        }
+        option,select{
+            padding: 2px;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color:#BF4E30 ;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>

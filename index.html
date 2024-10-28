@@ -1,23 +1,61 @@
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style/navstyle.css">
+    <title>Home</title>
 </head>
 <body>
-    <h1 id="one" onclick="del(event)">one</h1>
-    <h1 id="one" onclick="del(event)">Two</h1>
-    <h1 id="one" onclick="del(event)">Three</h1>
-    <h1 id="one" onclick="del(event)">FOur</h1>
-    <h1 id="one" onclick="del(event)">Five</h1>
-    
-    <script>
+
+    <div class="top">
+        <img src="logo.png" alt="logo"><h3 style="margin-left:-400px ;">Expense tracker</h3>
+        <nav class="nav_list">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user.html">User</a></li>
+                <li><a href="add-expense.html">Add-Expense</a></li>
+                <li><a href="summary.html">Summary</a></li>
+                <li><a href="">Exit</a></li>
+            </ul>
+        </nav>
+    </div>
+    <center>
+        <div class="home_body">
+            <h1 >Track your expenses effortlessly, gain financial insights, and<br> take control of your budget 
+                in one place.</h1>
+                
+        </div>
+        <a href="user.html">
+        <button class="index_but"  type="button">
+            Get started
+        </button>
+    </a>
         
-        function del(event){
-            event.target.remove();
+    </center>
+    <style>
+        .home_body{
+            margin-top: 160px;
         }
-    </script>
+        .index_but{
+            margin-top: 10px;
+            color: white;
+            list-style-type:none;
+            padding: 13px;
+            text-align: center;
+            background-color: #093824;
+            border-radius: 10px;
+            
+        }
+        .index_but:hover{
+            background-color:#BF4E30;
+            box-shadow: 3cap;
+            outline: inherit;
+            
+        }
+    </style>
 </body>
 </html>

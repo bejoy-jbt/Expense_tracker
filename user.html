@@ -1,0 +1,97 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/navstyle.css">
+    <title>User</title>
+</head>
+<body>
+<script >
+    
+function change(){
+    let uname = document.getElementById("name").value;
+    let urole=document.getElementById("role").value;
+
+    sessionStorage.setItem("user", uname);
+    sessionStorage.setItem("urole",urole);
+    window.location.href = "summary.html";
+}
+</script>
+    <div class="top">
+        <img src="logo.png" alt="logo"><h3 style="margin-left:-400px ;">Expense tracker</h3>
+        <nav class="nav_list">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user.html">User</a></li>
+                <li><a href="add-expense.html">Add-Expense</a></li>
+                <li><a href="summary.html">Summary</a></li>
+                <li><a href="">Exit</a></li>
+            </ul>
+        </nav>
+    </div>
+    <center>
+    <div class="user_table" style="background-color: #CFEE9E;">
+        <form action="add-expense.html">
+            <table >
+                <tr>
+                    <td >Name:</td>
+                    <td><input type="text" id="name" required></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" id="email"></td>
+                </tr>
+                <tr>
+                    <td>Role:</td>
+                    <td>
+                        <select  id="role" required>
+                            <option value="1">Student</option>
+                            <option value="2">Staff</option>
+                            <option value="3">Worker</option>
+                            <option value="3">Employee</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" onclick="change()">submit</button>
+        </form>
+    </div>
+</center>
+    <style>
+        .user_table{
+            margin-top: 150px;
+            border: 5px solid ;
+            border-radius: 10px;
+            max-width: fit-content;
+            padding: 20px;
+            scale: 1.3;
+            background-color: #587B7F;
+            
+        }
+        button{
+            margin-top: 5px;
+            
+            color: white;
+            list-style-type:none;
+            padding: 5px;
+            text-align: center;
+            background-color: #093824;
+            border-radius: 5px;
+            
+        
+        }
+        option,select{
+            padding: 2px;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color:#BF4E30 ;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>

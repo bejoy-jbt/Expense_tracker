@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/navstyle.css">
+    <title>Summary</title>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        let gname = sessionStorage.getItem("user");
+
+        let rolevalue=sessionStorage.getItem("urole");
+
+        let roleText = {
+            "1": "Student",
+            "2": "Staff",
+            "3": "Worker",
+            "4": "Employee"
+        };
+        const expenses = JSON.parse(sessionStorage.getItem("expenses")) || [];
+
+            // Select elements to display expenses and total amount
+            const expenseList = document.getElementById("expenseList");
+            const totalAmountElement = document.getElementById("totalAmount");
+
+            let totalAmount = 0;
+
+            // Display each expense and calculate total
+            expenses.forEach((expense) => {
+                const expenseCard = document.createElement("div");
+                expenseCard.className = "expense-card";
+
+                // Populate the card with expense details
+                expenseCard.innerHTML = `
+                    <h3>Expense Details</h3>
+                    <p><strong>Amount:</strong> $${expense.amount.toFixed(2)}</p>
+                    <p><strong>Date:</strong> ${expense.date}</p>
+                    <p><strong>Category:</strong> ${expense.category}</p>
+                `;
+
+                // Add the card to the expense list container
+                expenseList.appendChild(expenseCard);
+
+                totalAmount += expense.amount;
+
+            }); 
+            // Display the total amount
+            totalAmountElement.textContent = totalAmount.toFixed(2);
+                 
+        
+        
+       
+    
+    document.getElementById("prole").textContent=roleText[rolevalue]
+    document.getElementById("pname").textContent = gname || "User not found";
+});
+function clearExpenses() {
+            // Clear session storage
+            sessionStorage.removeItem("expenses");
+
+            // Clear displayed list and total
+            document.getElementById("expenseList").innerHTML = '';
+            document.getElementById("totalAmount").textContent = "0";
+        }
+        function closeTab() {
+            window.close();
+        }
+    </script>
+
+    <div class="top">
+        <img src="logo.png" alt="logo"><h3 style="margin-left:-400px ;">Expense tracker</h3>
+        <nav class="nav_list">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="user.html">User</a></li>
+                <li><a href="add-expense.html">Add-Expense</a></li>
+                <li><a href="summary.html">Summary</a></li>
+                <li><a href="user.html" onclick="closeTab()">Exit</a></li>
+            </ul>
+        </nav>
+    </div>
+    <center>
+        <div>
+            <h1>Summary</h1>
+        </div>
+    </center>
+    
+    <div class="sum_name"><p>Name:</p> <p id="pname"></p>
+        <p>Role:</p> <p id="prole"></p>
+        <hr>
+    </div>
+        <div id="totalContainer">
+            <h2>Total Amount: <span id="totalAmount">0</span></h2>
+        </div>
+        <button onclick="clearExpenses()">Clear All</button>
+    
+        <!-- Container for expense cards -->
+        <div class="card-container" id="expenseList"></div>
+        <style>
+        #pname,#prole{
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            background-color: #a94228;
+            color: white;
+            border-radius: 5px;
+        }
+            /* Card container styling */
+            .card-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+    
+            /* Individual card styling */
+            .expense-card {
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                padding: 16px;
+                width: 250px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                background-color: #f9f9f9;
+                text-align: left;
+            }
+    
+            /* Style for card header and other elements */
+            .expense-card h3 {
+                margin: 0;
+                font-size: 1.2em;
+                color: #333;
+            }
+    
+            .expense-card p {
+                margin: 8px 0;
+                color: #555;
+            }
+            .sum_name{
+                display: flex;
+                justify-content: center;
+            
+            }
+            /* Style for total amount */
+            #totalAmount {
+                font-weight: bold;
+                font-size: 1.5em;
+            }
+    
+            /* Button styling */
+            button {
+                margin-top: 20px;
+                padding: 10px 15px;
+                background-color: #bf4e30;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+    
+            button:hover {
+                background-color: #a94228;
+            }
+        </style>
+</body>
+</html>
